@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Hello Flask</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+		<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+		<script>
+			$(document).ready(function(){
+				
+				//Testing for JQuey include
+				$("p").click(function(){
+					$(this).hide();
+				});
+				
+				
+				//Testing for submit form
+				$('#my-form').submit(function(event) {
+					event.preventDefault(); // 防止表單自動提交
+
+					// 取得表單數據並轉換為JSON格式
+					var data = {
+						'name': $('#name').val(),
+						'email': $('#email').val()
+					};
+					var json_data = JSON.stringify(data);
+
+					// 透過AJAX發送POST請求
+					$.ajax({
+						type: 'POST',
+						url: '/submit',
+						data: json_data,
+						contentType: 'application/json',
+						success: function(response) {
+							$('#result').html(response);
+						},
+						error: function(error) {
+							console.log(error);
+						}
+					});
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1 style="color:blue;"> Testing for return  string by python</h1>
+		<h1>{{ message }}</h1>
+		<hr>
+		
+		<h1 style="color:blue;"> Testing for JQuery click behavior</h1>
+		<p>If you click on me, I will disappear.</p>
+		<p>Click me away!</p>
+		<p>Click me too!</p>
+		<hr>
+		
+		<h1 style="color:blue;"> Testing for form submit</h1>
+		<form id="my-form">
+			<label for="name">Name:</label>
+			<input type="text" name="name" id="name">
+			<br>
+			
+			<label for="email">Email:</label>
+			<input type="email" name="email" id="email">
+			<br>
+			
+			<button type="submit">Submit</button>
+		</form>
+		
+		<div id="result"></div>
+		<hr>
+		
+		<h1 style="color:blue;"> Testing for hyperlink</h1>
+		<a href="/about">About Us</a>
+		<br>
+		<a href="/about_new">About Us Bootrap</a>
+	</body>
+</html>

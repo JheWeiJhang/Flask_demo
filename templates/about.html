@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+	<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script>
+		$(function() {
+		  $('#my-form').submit(function(event) {
+			event.preventDefault();
+			var message = $('#message').val();
+			$.ajax({
+			  type: 'POST',
+			  url: '/about_post',
+			  data: JSON.stringify({message: message}),
+			  contentType: 'application/json',
+			  success: function(response) {
+				$('#result').html(response.result);
+			  }
+			});
+		  });
+		});
+	</script>
+</head>
+<body>
+	<h1>About Us</h1>
+	<p>We are a company that specializes in web development.</p>
+	
+	<h1 style="color:blue;"> Testing for another page form submit</h1>
+	<form id="my-form">
+		<label for="message">Enter your message:</label>
+		<input type="text" id="message" name="message">
+		<input type="submit" value="Submit">
+	</form>
+	
+	<div id="result"></div>
+	
+	<a href="/">Back to Home</a>
+</body>
+</html>
