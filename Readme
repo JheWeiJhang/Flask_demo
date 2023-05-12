@@ -1,5 +1,11 @@
 #Main idea
 Confirm whether chatgpt can generate flask's program structure and executable code by using chinese prompt
+the html can do following things
+1. redirect page
+2. get the python data to html
+3. submit info to python
+4. using JQuery on html
+5. using bootrap CSS to gender page
 
 #install env and tools suggested by chatgpt
 pip install flask
