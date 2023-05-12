@@ -1,0 +1,8 @@
+#Main idea
+Confirm whether chatgpt can generate flask's program structure and executable code by using chinese prompt
+
+#install env and tools suggested by chatgpt
+pip install flask
+pip install pyinstaller
+
+#if u want to access detail info, please check the chat.html exprted by office tool.
